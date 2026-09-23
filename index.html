@@ -9,11 +9,12 @@
   <style>
     :root {
       --teal: #008080;
-      --white: #FFFFFF;
-      --black: #071414;
-      --glass: rgba(255, 255, 255, 0.14);
-      --glass-border: rgba(255, 255, 255, 0.28);
-      --shadow: 0 25px 70px rgba(0, 0, 0, 0.18);
+      --teal-light: #00a5a5;
+      --bg: #050708;
+      --card: rgba(255, 255, 255, 0.055);
+      --border: rgba(255, 255, 255, 0.12);
+      --text: #ffffff;
+      --muted: #8b9898;
     }
 
     * {
@@ -27,63 +28,67 @@
     }
 
     body {
+      background: var(--bg);
+      color: var(--text);
       font-family:
         -apple-system,
         BlinkMacSystemFont,
         "Segoe UI",
         sans-serif;
-      background: var(--white);
-      color: var(--black);
-      font-weight: 600;
+      overflow-x: hidden;
     }
 
     a {
-      color: inherit;
       text-decoration: none;
+      color: inherit;
+    }
+
+    /* Background glow */
+
+    body::before {
+      content: "";
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      top: -250px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--teal);
+      opacity: .12;
+      filter: blur(140px);
+      pointer-events: none;
     }
 
     .container {
-      width: min(1120px, 90%);
+      width: min(1000px, 90%);
       margin: auto;
     }
 
-    /* =========================
-       LIQUID GLASS
-    ========================= */
+    /* Glass */
 
     .glass {
-      background: var(--glass);
-      border: 1px solid var(--glass-border);
-      backdrop-filter: blur(25px) saturate(150%);
-      -webkit-backdrop-filter: blur(25px) saturate(150%);
-      box-shadow: var(--shadow);
+      background: var(--card);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
     }
 
-    /* =========================
-       HEADER
-    ========================= */
+    /* Header */
 
     header {
       position: fixed;
       top: 18px;
       left: 50%;
       transform: translateX(-50%);
-      width: min(1080px, 92%);
-      z-index: 1000;
+      width: min(1000px, 90%);
+      z-index: 100;
 
-      border-radius: 22px;
-      background: rgba(255, 255, 255, 0.82);
-      border: 1px solid rgba(0, 128, 128, 0.15);
-
-      backdrop-filter: blur(22px);
-      -webkit-backdrop-filter: blur(22px);
-
-      box-shadow: 0 15px 45px rgba(0, 128, 128, 0.12);
+      border-radius: 18px;
     }
 
     .nav {
-      min-height: 68px;
-      padding: 0 22px;
+      height: 60px;
+      padding: 0 20px;
 
       display: flex;
       align-items: center;
@@ -91,354 +96,262 @@
     }
 
     .logo {
-      color: var(--teal);
-      font-size: 20px;
-      font-weight: 950;
-      letter-spacing: -0.8px;
+      color: var(--teal-light);
+      font-size: 17px;
+      font-weight: 900;
     }
 
     nav {
       display: flex;
-      gap: 28px;
+      gap: 25px;
     }
 
     nav a {
-      font-size: 14px;
-      font-weight: 800;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
       transition: .2s;
     }
 
     nav a:hover {
-      color: var(--teal);
+      color: white;
     }
 
-    /* =========================
-       HERO — TEAL
-    ========================= */
+    /* Hero */
 
     .hero {
       min-height: 100vh;
+
       display: flex;
       align-items: center;
-      text-align: center;
 
-      color: var(--white);
-      background:
-        radial-gradient(
-          circle at 20% 20%,
-          rgba(255,255,255,.2),
-          transparent 28%
-        ),
-        radial-gradient(
-          circle at 80% 70%,
-          rgba(255,255,255,.15),
-          transparent 30%
-        ),
-        var(--teal);
-
-      padding: 130px 0 90px;
-      overflow: hidden;
+      padding: 120px 0 70px;
     }
 
     .hero-content {
-      width: 100%;
+      max-width: 700px;
     }
 
-    .badge {
-      display: inline-flex;
-      padding: 9px 17px;
+    .tag {
+      display: inline-block;
+
+      padding: 8px 13px;
+      margin-bottom: 20px;
+
       border-radius: 999px;
 
-      background: rgba(255,255,255,.14);
-      border: 1px solid rgba(255,255,255,.3);
+      color: var(--teal-light);
+      border: 1px solid rgba(0, 128, 128, .5);
+      background: rgba(0, 128, 128, .08);
 
-      backdrop-filter: blur(15px);
-
-      font-size: 13px;
-      font-weight: 900;
+      font-size: 12px;
+      font-weight: 800;
       letter-spacing: .5px;
-      margin-bottom: 25px;
     }
 
-    .hero h1 {
-      font-size: clamp(48px, 9vw, 100px);
-      line-height: .92;
+    h1 {
+      font-size: clamp(55px, 9vw, 90px);
+      line-height: .9;
       letter-spacing: -5px;
       font-weight: 950;
     }
 
-    .hero h1 span {
-      display: block;
-      color: var(--white);
+    h1 span {
+      color: var(--teal-light);
     }
 
     .hero p {
-      max-width: 650px;
-      margin: 30px auto;
-      font-size: 17px;
+      max-width: 550px;
+      margin: 25px 0;
+
+      color: var(--muted);
+      font-size: 15px;
       line-height: 1.7;
-      font-weight: 500;
-      opacity: .9;
     }
 
     .buttons {
       display: flex;
-      justify-content: center;
+      gap: 10px;
       flex-wrap: wrap;
-      gap: 13px;
     }
 
     .btn {
-      padding: 14px 23px;
-      border-radius: 15px;
+      padding: 12px 18px;
+      border-radius: 12px;
 
-      font-size: 14px;
-      font-weight: 900;
+      font-size: 13px;
+      font-weight: 800;
 
-      transition:
-        transform .2s ease,
-        box-shadow .2s ease;
+      transition: .2s;
     }
 
-    .btn:hover {
-      transform: translateY(-3px);
+    .btn-primary {
+      background: var(--teal);
+      color: white;
     }
 
-    .btn-white {
-      color: var(--teal);
-      background: var(--white);
-      box-shadow: 0 12px 30px rgba(0,0,0,.15);
+    .btn-primary:hover {
+      background: var(--teal-light);
+      transform: translateY(-2px);
     }
 
     .btn-glass {
-      color: var(--white);
-      background: rgba(255,255,255,.12);
-      border: 1px solid rgba(255,255,255,.3);
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: white;
 
       backdrop-filter: blur(15px);
     }
 
-    /* =========================
-       CONTACT — WHITE
-    ========================= */
+    .btn-glass:hover {
+      border-color: var(--teal);
+    }
 
-    .contact {
-      background: var(--white);
-      padding: 110px 0;
+    /* Sections */
+
+    section {
+      padding: 80px 0;
     }
 
     .section-title {
-      text-align: center;
-      margin-bottom: 55px;
+      margin-bottom: 25px;
+    }
+
+    .section-title small {
+      color: var(--teal-light);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 1px;
     }
 
     .section-title h2 {
-      font-size: clamp(40px, 6vw, 64px);
+      margin-top: 5px;
+
+      font-size: 40px;
+      letter-spacing: -2px;
       font-weight: 950;
-      letter-spacing: -3px;
-      color: var(--teal);
     }
 
-    .section-title p {
-      margin-top: 10px;
-      color: #496060;
-      font-weight: 600;
+    /* Contact */
+
+    .contact-box {
+      padding: 22px;
+      border-radius: 22px;
     }
 
     .contact-grid {
       display: grid;
-      grid-template-columns:
-        repeat(3, 1fr);
-      gap: 22px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
     }
 
     .contact-card {
-      position: relative;
-      overflow: hidden;
+      padding: 22px;
 
-      padding: 30px;
-      min-height: 230px;
+      border-radius: 16px;
 
-      border-radius: 25px;
+      background: rgba(255, 255, 255, .035);
+      border: 1px solid rgba(255, 255, 255, .08);
 
-      color: var(--white);
-      background: var(--teal);
-
-      box-shadow: 0 20px 55px rgba(0,128,128,.18);
-
-      transition:
-        transform .25s ease,
-        box-shadow .25s ease;
-    }
-
-    .contact-card::before {
-      content: "";
-      position: absolute;
-
-      width: 180px;
-      height: 180px;
-
-      right: -70px;
-      top: -70px;
-
-      border-radius: 50%;
-
-      background: rgba(255,255,255,.12);
-      filter: blur(2px);
+      transition: .2s;
     }
 
     .contact-card:hover {
-      transform: translateY(-7px);
-      box-shadow: 0 30px 70px rgba(0,128,128,.25);
+      border-color: rgba(0, 128, 128, .6);
+      transform: translateY(-3px);
     }
 
-    .contact-icon {
-      width: 48px;
-      height: 48px;
+    .icon {
+      width: 38px;
+      height: 38px;
 
       display: grid;
       place-items: center;
 
-      border-radius: 15px;
+      margin-bottom: 18px;
 
-      background: rgba(255,255,255,.15);
-      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 11px;
 
-      backdrop-filter: blur(12px);
+      background: rgba(0, 128, 128, .13);
+      color: var(--teal-light);
 
-      font-size: 20px;
-      margin-bottom: 22px;
+      font-size: 16px;
     }
 
     .contact-card h3 {
-      font-size: 22px;
-      font-weight: 950;
-      margin-bottom: 8px;
+      font-size: 16px;
+      font-weight: 900;
+      margin-bottom: 5px;
     }
 
     .contact-card p {
-      font-size: 14px;
-      opacity: .8;
-      margin-bottom: 18px;
-      font-weight: 500;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 12px;
     }
 
     .contact-card a {
-      font-size: 14px;
-      font-weight: 900;
+      color: var(--teal-light);
+      font-size: 12px;
+      font-weight: 800;
       word-break: break-word;
     }
 
-    /* =========================
-       SUPPORT — TEAL
-    ========================= */
+    /* Donation */
 
-    .support {
-      padding: 120px 0;
-      color: var(--white);
-      background: var(--teal);
+    .donation {
+      padding-bottom: 100px;
     }
 
-    .support-box {
-      position: relative;
-      overflow: hidden;
-
-      max-width: 850px;
-      margin: auto;
-      padding: 65px 35px;
+    .donation-box {
+      padding: 35px;
+      border-radius: 24px;
 
       text-align: center;
-      border-radius: 35px;
 
-      background: rgba(255,255,255,.1);
-      border: 1px solid rgba(255,255,255,.28);
+      background:
+        linear-gradient(
+          135deg,
+          rgba(0, 128, 128, .14),
+          rgba(255, 255, 255, .035)
+        );
 
-      backdrop-filter: blur(30px);
-      -webkit-backdrop-filter: blur(30px);
-
-      box-shadow: 0 30px 80px rgba(0,0,0,.15);
+      border: 1px solid rgba(0, 128, 128, .35);
     }
 
-    .support-box::before,
-    .support-box::after {
-      content: "";
-      position: absolute;
-
-      border-radius: 50%;
-      background: rgba(255,255,255,.08);
-      filter: blur(5px);
-    }
-
-    .support-box::before {
-      width: 250px;
-      height: 250px;
-      left: -100px;
-      top: -120px;
-    }
-
-    .support-box::after {
-      width: 220px;
-      height: 220px;
-      right: -90px;
-      bottom: -100px;
-    }
-
-    .support-box h2 {
-      position: relative;
-      z-index: 1;
-
-      font-size: clamp(38px, 6vw, 65px);
-      line-height: 1;
-      letter-spacing: -3px;
+    .donation-box h2 {
+      font-size: 36px;
+      letter-spacing: -2px;
       font-weight: 950;
     }
 
-    .support-box p {
-      position: relative;
-      z-index: 1;
+    .donation-box p {
+      max-width: 500px;
+      margin: 12px auto 22px;
 
-      max-width: 600px;
-      margin: 22px auto 30px;
-
-      font-size: 16px;
-      font-weight: 500;
-      opacity: .88;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
     }
 
-    .support-box .btn {
-      position: relative;
-      z-index: 1;
-
-      display: inline-block;
-      background: var(--white);
-      color: var(--teal);
-    }
-
-    /* =========================
-       FOOTER — WHITE
-    ========================= */
+    /* Footer */
 
     footer {
-      padding: 35px 0;
-      background: var(--white);
-      color: var(--teal);
+      padding: 25px 0;
+
+      border-top: 1px solid rgba(255,255,255,.07);
+
+      color: #667171;
       text-align: center;
-      font-size: 13px;
-      font-weight: 800;
+      font-size: 11px;
     }
 
-    /* =========================
-       MOBILE
-    ========================= */
+    /* Mobile */
 
-    @media (max-width: 760px) {
+    @media (max-width: 700px) {
 
       header {
         top: 10px;
-      }
-
-      .nav {
-        min-height: 60px;
       }
 
       nav {
@@ -446,28 +359,27 @@
       }
 
       .hero {
-        padding-top: 120px;
+        min-height: 90vh;
       }
 
-      .hero h1 {
+      h1 {
         letter-spacing: -3px;
-      }
-
-      .contact {
-        padding: 80px 0;
       }
 
       .contact-grid {
         grid-template-columns: 1fr;
       }
 
-      .support {
-        padding: 80px 0;
+      .contact-box {
+        padding: 15px;
       }
 
-      .support-box {
-        padding: 50px 22px;
-        border-radius: 28px;
+      .donation-box {
+        padding: 30px 20px;
+      }
+
+      .donation-box h2 {
+        font-size: 30px;
       }
     }
   </style>
@@ -475,42 +387,40 @@
 
 <body>
 
-  <!-- =========================
-       NAVIGATION
-  ========================= -->
+  <!-- HEADER -->
 
-  <header>
+  <header class="glass">
     <div class="nav">
 
+      <!-- ĐỔI TÊN -->
       <a href="#" class="logo">
         YOUR_NAME
       </a>
 
       <nav>
-        <a href="#home">HOME</a>
-        <a href="#contact">CONTACT</a>
-        <a href="#support">SUPPORT</a>
+        <a href="#home">Home</a>
+        <a href="#contact">Contact</a>
+        <a href="#support">Support</a>
       </nav>
 
     </div>
   </header>
 
 
-  <!-- =========================
-       HERO
-  ========================= -->
+  <!-- HERO -->
 
-  <main>
+  <section class="hero" id="home">
 
-    <section class="hero" id="home">
-      <div class="container hero-content">
+    <div class="container">
 
-        <div class="badge">
-          ✦ DEVELOPER / CREATOR
+      <div class="hero-content">
+
+        <div class="tag">
+          ● DEVELOPER / CREATOR
         </div>
 
         <h1>
-          YOUR
+          YOUR<br>
           <span>NAME.</span>
         </h1>
 
@@ -522,41 +432,35 @@
 
         <div class="buttons">
 
-          <a
-            href="#contact"
-            class="btn btn-white"
-          >
-            CONTACT ME
+          <a href="#contact" class="btn btn-primary">
+            Contact Me
           </a>
 
-          <a
-            href="#support"
-            class="btn btn-glass"
-          >
-            SUPPORT DEVELOPER
+          <a href="#support" class="btn btn-glass">
+            Support Developer
           </a>
 
         </div>
 
       </div>
-    </section>
+
+    </div>
+
+  </section>
 
 
-    <!-- =========================
-         CONTACT
-    ========================= -->
+  <!-- CONTACT -->
 
-    <section class="contact" id="contact">
+  <section id="contact">
 
-      <div class="container">
+    <div class="container">
 
-        <div class="section-title">
-          <h2>CONTACT.</h2>
-          <p>
-            Choose your preferred way to reach me.
-          </p>
-        </div>
+      <div class="section-title">
+        <small>GET IN TOUCH</small>
+        <h2>Contact.</h2>
+      </div>
 
+      <div class="contact-box glass">
 
         <div class="contact-grid">
 
@@ -564,14 +468,12 @@
 
           <div class="contact-card">
 
-            <div class="contact-icon">
-              ✉
-            </div>
+            <div class="icon">✉</div>
 
-            <h3>EMAIL</h3>
+            <h3>Email</h3>
 
             <p>
-              Send me an email directly.
+              Send me an email.
             </p>
 
             <a href="mailto:YOUR_EMAIL@example.com">
@@ -585,20 +487,17 @@
 
           <div class="contact-card">
 
-            <div class="contact-icon">
-              @
-            </div>
+            <div class="icon">➤</div>
 
-            <h3>TELEGRAM</h3>
+            <h3>Telegram</h3>
 
             <p>
-              Contact me through Telegram.
+              Contact me on Telegram.
             </p>
 
             <a
               href="https://t.me/YOUR_USERNAME"
               target="_blank"
-              rel="noopener"
             >
               @YOUR_USERNAME
             </a>
@@ -610,20 +509,17 @@
 
           <div class="contact-card">
 
-            <div class="contact-icon">
-              ◈
-            </div>
+            <div class="icon">↗</div>
 
-            <h3>WEBSITE</h3>
+            <h3>Website</h3>
 
             <p>
-              Visit my portfolio or website.
+              Visit my website.
             </p>
 
             <a
               href="YOUR_WEBSITE_URL"
               target="_blank"
-              rel="noopener"
             >
               YOUR_WEBSITE_URL
             </a>
@@ -634,63 +530,50 @@
 
       </div>
 
-    </section>
+    </div>
+
+  </section>
 
 
-    <!-- =========================
-         SUPPORT
-    ========================= -->
+  <!-- DONATION -->
 
-    <section class="support" id="support">
+  <section id="support" class="donation">
 
-      <div class="container">
+    <div class="container">
 
-        <div class="support-box">
+      <div class="donation-box">
 
-          <h2>
-            SUPPORT<br>
-            THE DEVELOPER.
-          </h2>
+        <h2>
+          Support the Developer.
+        </h2>
 
-          <p>
-            If you enjoy my projects and want to help
-            support future development, you can make
-            a donation using the button below.
-          </p>
+        <p>
+          Nếu bạn thấy dự án hữu ích,
+          bạn có thể ủng hộ để mình tiếp tục
+          phát triển những dự án mới.
+        </p>
 
-          <!--
-            REPLACE THIS LINK
+        <!-- ĐỔI LINK DONATION -->
 
-            Example:
-            https://buymeacoffee.com/YOUR_NAME
-            https://ko-fi.com/YOUR_NAME
-            https://paypal.me/YOUR_NAME
-          -->
-
-          <a
-            href="YOUR_DONATION_LINK"
-            target="_blank"
-            rel="noopener"
-            class="btn"
-          >
-            ☕ DONATE
-          </a>
-
-        </div>
+        <a
+          href="YOUR_DONATION_LINK"
+          target="_blank"
+          class="btn btn-primary"
+        >
+          ☕ Donate
+        </a>
 
       </div>
 
-    </section>
+    </div>
 
-  </main>
+  </section>
 
 
-  <!-- =========================
-       FOOTER
-  ========================= -->
+  <!-- FOOTER -->
 
   <footer>
-    © 2026 YOUR_NAME — ALL RIGHTS RESERVED.
+    © 2026 YOUR_NAME — All rights reserved.
   </footer>
 
 </body>
