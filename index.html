@@ -8,13 +8,25 @@
 
 <style>
 
+/* =========================
+   VARIABLES
+========================= */
+
 :root {
     --teal: #008080;
     --bg: #050909;
     --white: #ffffff;
-    --glass: rgba(255,255,255,.055);
-    --border: rgba(255,255,255,.10);
+
+    --glass: rgba(255,255,255,0.055);
+    --glass-hover: rgba(0,128,128,0.08);
+
+    --border: rgba(255,255,255,0.10);
 }
+
+
+/* =========================
+   RESET
+========================= */
 
 * {
     box-sizing: border-box;
@@ -22,39 +34,68 @@
     padding: 0;
 }
 
+
+/* =========================
+   BODY
+========================= */
+
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
     background: var(--bg);
-    color: white;
+
+    color: var(--white);
+
     min-height: 100vh;
 }
 
-/* Ánh sáng nền */
+
+/* Ánh sáng nền mềm */
 
 body::before {
+
     content: "";
+
     position: fixed;
 
     width: 420px;
     height: 420px;
 
-    background: rgba(0,128,128,.10);
+    background:
+        rgba(0,128,128,0.10);
 
-    filter: blur(120px);
+    filter:
+        blur(120px);
 
     border-radius: 50%;
 
     top: -180px;
+
     left: 50%;
 
-    transform: translateX(-50%);
+    transform:
+        translateX(-50%);
 
     pointer-events: none;
+
+    z-index: -1;
 }
 
+
+/* =========================
+   CONTAINER
+========================= */
+
 .container {
-    width: min(950px, 92%);
-    margin: auto;
+
+    width:
+        min(950px, 92%);
+
+    margin:
+        auto;
 }
 
 
@@ -63,28 +104,48 @@ body::before {
 ========================= */
 
 header {
-    padding: 28px 0 10px;
 
-    display: flex;
-    align-items: center;
+    padding:
+        28px 0 10px;
 
-    gap: 12px;
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        12px;
 }
+
 
 .avatar {
-    width: 46px;
-    height: 46px;
 
-    border-radius: 50%;
+    width:
+        46px;
 
-    object-fit: cover;
+    height:
+        46px;
 
-    border: 1px solid rgba(255,255,255,.12);
+    border-radius:
+        50%;
+
+    object-fit:
+        cover;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.12);
 }
 
+
 .logo {
-    font-size: 20px;
-    font-weight: 800;
+
+    font-size:
+        20px;
+
+    font-weight:
+        800;
 }
 
 
@@ -93,20 +154,33 @@ header {
 ========================= */
 
 .hero {
-    text-align: center;
 
-    padding: 65px 0 55px;
+    text-align:
+        center;
+
+    padding:
+        65px 0 55px;
 }
+
 
 .hero h1 {
 
-    font-size: clamp(58px, 15vw, 120px);
+    font-size:
+        clamp(58px, 15vw, 120px);
 
-    font-weight: 900;
+    font-weight:
+        900;
 
-    letter-spacing: -5px;
+    letter-spacing:
+        -5px;
 
-    color: #fff;
+    color:
+        #ffffff;
+
+    /*
+       Hiệu ứng kính mềm
+       nhưng chữ vẫn đậm
+    */
 
     background:
         linear-gradient(
@@ -118,37 +192,57 @@ header {
             #ffffff 100%
         );
 
-    background-size: 220% 100%;
+    background-size:
+        220% 100%;
 
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-background-clip:
+        text;
+
+    -webkit-text-fill-color:
+        transparent;
 
     filter:
-        drop-shadow(0 0 10px rgba(255,255,255,.10))
-        drop-shadow(0 0 20px rgba(0,128,128,.08));
+        drop-shadow(
+            0 0 10px
+            rgba(255,255,255,0.10)
+        )
+        drop-shadow(
+            0 0 20px
+            rgba(0,128,128,0.08)
+        );
 
-    animation: glassMove 5s ease-in-out infinite;
+    animation:
+        glassMove 5s ease-in-out infinite;
 }
+
 
 @keyframes glassMove {
 
-    0%,100% {
-        background-position: 0% 50%;
+    0%,
+    100% {
+
+        background-position:
+            0% 50%;
     }
 
     50% {
-        background-position: 100% 50%;
-    }
 
+        background-position:
+            100% 50%;
+    }
 }
+
 
 .hero p {
 
-    margin-top: 14px;
+    margin-top:
+        14px;
 
-    color: rgba(255,255,255,.45);
+    color:
+        rgba(255,255,255,0.45);
 
-    font-size: 14px;
+    font-size:
+        14px;
 }
 
 
@@ -158,66 +252,89 @@ header {
 
 .categories {
 
-    display: grid;
+    display:
+        grid;
 
     grid-template-columns:
-        repeat(3,1fr);
+        repeat(3, 1fr);
 
-    gap: 14px;
+    gap:
+        14px;
 }
+
 
 .category {
 
-    padding: 25px 20px;
+    padding:
+        25px 20px;
 
-    background: var(--glass);
+    background:
+        var(--glass);
 
-    border: 1px solid var(--border);
+    border:
+        1px solid
+        var(--border);
 
-    border-radius: 20px;
+    border-radius:
+        20px;
 
-    backdrop-filter: blur(18px);
+    backdrop-filter:
+        blur(18px);
 
-    -webkit-backdrop-filter: blur(18px);
+    -webkit-backdrop-filter:
+        blur(18px);
 
-    cursor: pointer;
+    cursor:
+        pointer;
 
-    transition: .25s;
+    transition:
+        0.25s ease;
 }
+
 
 .category:hover {
 
-    transform: translateY(-3px);
+    transform:
+        translateY(-3px);
 
     border-color:
-        rgba(0,128,128,.5);
+        rgba(0,128,128,0.5);
 
     background:
-        rgba(0,128,128,.08);
+        var(--glass-hover);
 }
+
 
 .category-icon {
 
-    font-size: 25px;
+    font-size:
+        25px;
 
-    margin-bottom: 18px;
+    margin-bottom:
+        18px;
 }
+
 
 .category h2 {
 
-    font-size: 17px;
+    font-size:
+        17px;
 
-    font-weight: 800;
+    font-weight:
+        800;
 }
+
 
 .category p {
 
-    margin-top: 7px;
+    margin-top:
+        7px;
 
     color:
-        rgba(255,255,255,.42);
+        rgba(255,255,255,0.42);
 
-    font-size: 12px;
+    font-size:
+        12px;
 }
 
 
@@ -227,39 +344,50 @@ header {
 
 .contact-title {
 
-    font-size: 18px;
+    font-size:
+        18px;
 
     margin:
         35px 0 14px;
 }
 
+
 .contacts {
 
-    display: grid;
+    display:
+        grid;
 
     grid-template-columns:
-        repeat(3,1fr);
+        repeat(3, 1fr);
 
-    gap: 14px;
+    gap:
+        14px;
 }
+
 
 .contact {
 
-    display: block;
+    display:
+        block;
 
-    text-decoration: none;
+    text-decoration:
+        none;
 
-    color: white;
+    color:
+        white;
 
-    padding: 20px;
+    padding:
+        20px;
 
     background:
         var(--glass);
 
     border:
-        1px solid var(--border);
+        1px solid
+        var(--border);
 
-    border-radius: 18px;
+    border-radius:
+        18px;
 
     backdrop-filter:
         blur(18px);
@@ -267,8 +395,10 @@ header {
     -webkit-backdrop-filter:
         blur(18px);
 
-    transition: .25s;
+    transition:
+        0.25s ease;
 }
+
 
 .contact:hover {
 
@@ -276,29 +406,36 @@ header {
         translateY(-3px);
 
     border-color:
-        rgba(0,128,128,.5);
+        rgba(0,128,128,0.5);
 
     background:
-        rgba(0,128,128,.08);
+        var(--glass-hover);
 }
+
 
 .contact-name {
 
-    font-size: 12px;
+    font-size:
+        12px;
 
     color:
-        rgba(255,255,255,.42);
+        rgba(255,255,255,0.42);
 
-    margin-bottom: 8px;
+    margin-bottom:
+        8px;
 }
+
 
 .contact-value {
 
-    font-size: 14px;
+    font-size:
+        14px;
 
-    font-weight: 700;
+    font-weight:
+        700;
 
-    word-break: break-word;
+    word-break:
+        break-word;
 }
 
 
@@ -308,50 +445,80 @@ header {
 
 .page {
 
-    display: none;
+    display:
+        none;
 
-    padding: 35px 0;
+    padding:
+        35px 0;
 }
+
 
 .page.active {
 
-    display: block;
+    display:
+        block;
 }
+
 
 .page-header {
 
-    display: flex;
+    display:
+        flex;
 
-    align-items: center;
+    align-items:
+        center;
 
     justify-content:
         space-between;
 
-    margin-bottom: 25px;
+    margin-bottom:
+        25px;
 }
+
 
 .page-header h2 {
 
-    font-size: 34px;
+    font-size:
+        34px;
 }
+
 
 .back {
 
     border:
-        1px solid var(--border);
+        1px solid
+        var(--border);
 
     background:
         var(--glass);
 
-    color: white;
+    color:
+        white;
 
-    padding: 10px 15px;
+    padding:
+        10px 15px;
 
-    border-radius: 12px;
+    border-radius:
+        12px;
 
-    cursor: pointer;
+    cursor:
+        pointer;
 
-    font-size: 14px;
+    font-size:
+        14px;
+
+    transition:
+        0.2s;
+}
+
+
+.back:hover {
+
+    background:
+        var(--glass-hover);
+
+    border-color:
+        rgba(0,128,128,0.5);
 }
 
 
@@ -361,30 +528,39 @@ header {
 
 .gallery {
 
-    display: grid;
+    display:
+        grid;
 
     grid-template-columns:
-        repeat(3,1fr);
+        repeat(3, 1fr);
 
-    gap: 14px;
+    gap:
+        14px;
 }
+
 
 .gallery img {
 
-    width: 100%;
+    width:
+        100%;
 
-    display: block;
+    display:
+        block;
 
-    border-radius: 18px;
+    border-radius:
+        18px;
 
     border:
-        1px solid var(--border);
+        1px solid
+        var(--border);
 
     background:
         var(--glass);
 
-    transition: .25s;
+    transition:
+        0.25s ease;
 }
+
 
 .gallery img:hover {
 
@@ -399,15 +575,17 @@ header {
 
 footer {
 
-    text-align: center;
+    text-align:
+        center;
 
     padding:
         35px 0 25px;
 
     color:
-        rgba(255,255,255,.25);
+        rgba(255,255,255,0.25);
 
-    font-size: 12px;
+    font-size:
+        12px;
 }
 
 
@@ -415,20 +593,28 @@ footer {
    MOBILE
 ========================= */
 
-@media(max-width:650px) {
+@media (max-width: 650px) {
 
-    .categories,
+    .categories {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
     .contacts {
 
         grid-template-columns:
             1fr;
     }
 
+
     .gallery {
 
         grid-template-columns:
-            repeat(2,1fr);
+            repeat(2, 1fr);
     }
+
 
     .hero {
 
@@ -436,15 +622,18 @@ footer {
             55px 0 45px;
     }
 
+
     .hero h1 {
 
         letter-spacing:
             -3px;
     }
 
+
     .page-header h2 {
 
-        font-size: 28px;
+        font-size:
+            28px;
     }
 
 }
@@ -458,13 +647,11 @@ footer {
 <div class="container">
 
 
-<!-- =========================
+<!-- =====================================================
      HEADER
-========================= -->
+===================================================== -->
 
 <header>
-
-    <!-- TÊN FILE ẢNH ĐÚNG CỦA MÀY -->
 
     <img
         src="IMG_1496.jpeg"
@@ -480,12 +667,14 @@ footer {
 
 
 
-<!-- =========================
-     TRANG CHÍNH
-========================= -->
+<!-- =====================================================
+     TRANG CHỦ
+===================================================== -->
 
 <main id="home">
 
+
+    <!-- HERO -->
 
     <section class="hero">
 
@@ -501,12 +690,14 @@ footer {
 
 
 
-    <!-- =====================
+    <!-- =================================================
          CÁC MỤC
-    ====================== -->
+    ================================================== -->
 
     <section class="categories">
 
+
+        <!-- WALLPAPER -->
 
         <div
             class="category"
@@ -529,6 +720,8 @@ footer {
 
 
 
+        <!-- AIRCARD -->
+
         <div
             class="category"
             onclick="openPage('aircard')"
@@ -549,6 +742,8 @@ footer {
         </div>
 
 
+
+        <!-- PASSCODE -->
 
         <div
             class="category"
@@ -574,9 +769,9 @@ footer {
 
 
 
-    <!-- =====================
-         LIÊN HỆ
-    ====================== -->
+    <!-- =================================================
+         THÔNG TIN LIÊN HỆ
+    ================================================== -->
 
     <h2 class="contact-title">
         Thông tin liên hệ
@@ -590,7 +785,7 @@ footer {
 
         <a
             class="contact"
-            href="mailto:YOUR_EMAIL@example.com"
+            href="mailto:nhattienn.189@gmail.com"
         >
 
             <div class="contact-name">
@@ -598,7 +793,7 @@ footer {
             </div>
 
             <div class="contact-value">
-                YOUR_EMAIL@example.com
+                nhattienn.189@gmail.com
             </div>
 
         </a>
@@ -609,7 +804,7 @@ footer {
 
         <a
             class="contact"
-            href="https://t.me/YOUR_USERNAME"
+            href="https://t.me/denrindzwp"
             target="_blank"
             rel="noopener"
         >
@@ -619,28 +814,28 @@ footer {
             </div>
 
             <div class="contact-value">
-                @YOUR_USERNAME
+                @denrindzwp
             </div>
 
         </a>
 
 
 
-        <!-- GITHUB -->
+        <!-- TIKTOK -->
 
         <a
             class="contact"
-            href="https://github.com/YOUR_USERNAME"
+            href="https://www.tiktok.com/@denrindz189"
             target="_blank"
             rel="noopener"
         >
 
             <div class="contact-name">
-                GitHub
+                TikTok
             </div>
 
             <div class="contact-value">
-                github.com/YOUR_USERNAME
+                @denrindz189
             </div>
 
         </a>
@@ -652,9 +847,9 @@ footer {
 
 
 
-<!-- =========================
+<!-- =====================================================
      WALLPAPER
-========================= -->
+===================================================== -->
 
 <section
     id="wallpaper"
@@ -679,12 +874,17 @@ footer {
 
     <div class="gallery">
 
-        <img src="wallpaper/1.jpg">
-        <img src="wallpaper/2.jpg">
-        <img src="wallpaper/3.jpg">
-        <img src="wallpaper/4.jpg">
-        <img src="wallpaper/5.jpg">
-        <img src="wallpaper/6.jpg">
+        <img src="wallpaper/1.jpg" alt="Wallpaper 1">
+
+        <img src="wallpaper/2.jpg" alt="Wallpaper 2">
+
+        <img src="wallpaper/3.jpg" alt="Wallpaper 3">
+
+        <img src="wallpaper/4.jpg" alt="Wallpaper 4">
+
+        <img src="wallpaper/5.jpg" alt="Wallpaper 5">
+
+        <img src="wallpaper/6.jpg" alt="Wallpaper 6">
 
     </div>
 
@@ -692,9 +892,9 @@ footer {
 
 
 
-<!-- =========================
+<!-- =====================================================
      AIRCARD
-========================= -->
+===================================================== -->
 
 <section
     id="aircard"
@@ -719,12 +919,17 @@ footer {
 
     <div class="gallery">
 
-        <img src="aircard/1.jpg">
-        <img src="aircard/2.jpg">
-        <img src="aircard/3.jpg">
-        <img src="aircard/4.jpg">
-        <img src="aircard/5.jpg">
-        <img src="aircard/6.jpg">
+        <img src="aircard/1.jpg" alt="AirCard 1">
+
+        <img src="aircard/2.jpg" alt="AirCard 2">
+
+        <img src="aircard/3.jpg" alt="AirCard 3">
+
+        <img src="aircard/4.jpg" alt="AirCard 4">
+
+        <img src="aircard/5.jpg" alt="AirCard 5">
+
+        <img src="aircard/6.jpg" alt="AirCard 6">
 
     </div>
 
@@ -732,9 +937,9 @@ footer {
 
 
 
-<!-- =========================
-     PASSCODE
-========================= -->
+<!-- =====================================================
+     THEME PASSCODE
+===================================================== -->
 
 <section
     id="passcode"
@@ -759,12 +964,17 @@ footer {
 
     <div class="gallery">
 
-        <img src="passcode/1.jpg">
-        <img src="passcode/2.jpg">
-        <img src="passcode/3.jpg">
-        <img src="passcode/4.jpg">
-        <img src="passcode/5.jpg">
-        <img src="passcode/6.jpg">
+        <img src="passcode/1.jpg" alt="Passcode 1">
+
+        <img src="passcode/2.jpg" alt="Passcode 2">
+
+        <img src="passcode/3.jpg" alt="Passcode 3">
+
+        <img src="passcode/4.jpg" alt="Passcode 4">
+
+        <img src="passcode/5.jpg" alt="Passcode 5">
+
+        <img src="passcode/6.jpg" alt="Passcode 6">
 
     </div>
 
@@ -772,9 +982,9 @@ footer {
 
 
 
-<!-- =========================
+<!-- =====================================================
      FOOTER
-========================= -->
+===================================================== -->
 
 <footer>
 
@@ -789,14 +999,20 @@ footer {
 
 <script>
 
-/* MỞ MỤC */
+/* =====================================================
+   MỞ MỤC
+===================================================== */
 
 function openPage(page) {
+
+    /* Ẩn trang chủ */
 
     document
         .getElementById("home")
         .style.display = "none";
 
+
+    /* Ẩn tất cả page */
 
     document
         .querySelectorAll(".page")
@@ -809,10 +1025,14 @@ function openPage(page) {
         });
 
 
+    /* Hiện page được chọn */
+
     document
         .getElementById(page)
         .classList.add("active");
 
+
+    /* Cuộn lên đầu */
 
     window.scrollTo({
         top: 0,
@@ -823,9 +1043,13 @@ function openPage(page) {
 
 
 
-/* QUAY VỀ TRANG CHỦ */
+/* =====================================================
+   QUAY VỀ TRANG CHỦ
+===================================================== */
 
 function goHome() {
+
+    /* Ẩn tất cả page */
 
     document
         .querySelectorAll(".page")
@@ -838,10 +1062,14 @@ function goHome() {
         });
 
 
+    /* Hiện trang chủ */
+
     document
         .getElementById("home")
         .style.display = "block";
 
+
+    /* Cuộn lên đầu */
 
     window.scrollTo({
         top: 0,
